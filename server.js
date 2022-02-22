@@ -42,7 +42,7 @@ app.use("/users", users);
 app.use(express.static(path.join(__dirname + '/angular-src/dist/angular-src')));
 
 // variable - Can edit which portname or port to host the website locally
-const server_port = process.env.HOST_PORT || 8080; 
+const server_port = process.env.PORT || 8080; 
 
 app.get('/*', (req, res) => {
   const fullPath = path.join(__dirname, '/angular-src/dist/angular-src/index.html');
