@@ -28,6 +28,9 @@ const app = express();
 // Routes for database - directs to functions for each data block
 const users = require("./routes/users");
 
+// variable - Can edit which portname or port to host the website locally
+const server_port = process.env.PORT || 8080; 
+
 // Middleware
 app.use(cors());
 app.options('*', cors());
@@ -43,9 +46,6 @@ app.use("/users", users);
 // Set Static Folder
 app.use(express.static(path.join(__dirname + '/angular-src/dist/angular-src')));
 
-// variable - Can edit which portname or port to host the website locally
-const server_port = process.env.PORT || 8080; 
-
 app.get('/*', (req, res) => {
   const fullPath = path.join(__dirname, '/angular-src/dist/angular-src/index.html');
   console.log(' Fetching from.. ' + fullPath);
@@ -55,5 +55,4 @@ app.get('/*', (req, res) => {
 // Start Server
 app.listen(server_port, () => {
   console.log('Server listening on port ' + server_port);
-
 });
