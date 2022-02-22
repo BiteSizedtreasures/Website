@@ -33,7 +33,9 @@
     "mongoose": "^6.1.4",
     "passport": "^0.5.2",
     "passport-jwt": "*",
-    "underscore": "^1.13.2"
+    "path": "^0.12.7",
+    "underscore": "^1.13.2",
+    "express-session": "*"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

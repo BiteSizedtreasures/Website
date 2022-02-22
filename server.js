@@ -25,17 +25,17 @@ mongoose.connection.on("error", (err) => {
 
 // Initialize Express framework
 const app = express();
-
 // Routes for database - directs to functions for each data block
 const users = require("./routes/users");
 
 // Middleware
 app.use(cors());
+app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'SECRET' })); // session secret
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Use '/users' for all our user route functions
 app.use("/users", users);
@@ -44,8 +44,7 @@ app.use("/users", users);
 app.use(express.static(path.join(__dirname + '/angular-src/dist/angular-src')));
 
 // variable - Can edit which portname or port to host the website locally
-const host_name = process.env.HOST_NAME || 'localhost';
-const port = process.env.HOST_PORT || 3000; 
+const server_port = process.env.HOST_PORT || 8080; 
 
 app.get('/*', (req, res) => {
   const fullPath = path.join(__dirname, '/angular-src/dist/angular-src/index.html');
