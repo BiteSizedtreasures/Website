@@ -2,7 +2,6 @@ require("dotenv").config();
 
 // Code Dependencies - Including packages and libraries
 const express = require("express");
-const session = require('express-session');
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -33,7 +32,6 @@ app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'SECRET' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 
