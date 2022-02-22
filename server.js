@@ -28,26 +28,31 @@ const app = express();
 // Routes for database - directs to functions for each data block
 const users = require("./routes/users");
 
-// Set Static Folder
-app.use(express.static(path.join(__dirname, "public")));
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: 'SECRET' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Use '/users' for all our user route functions
 app.use("/users", users);
 
-// variable - Can edit which portname or port to host the website locally
-const host_name = process.env.HOST_NAME;
-const port = process.env.HOST_PORT;
+// Set Static Folder
+app.use(express.static(path.join(__dirname + '/angular-src/dist/angular-src')));
 
-// Index route
-app.get("/", (req, res) => {
-  res.send("Invalid Endpoint!");
+// variable - Can edit which portname or port to host the website locally
+const host_name = process.env.HOST_NAME || 'localhost';
+const port = process.env.HOST_PORT || 3000; 
+
+app.get('/*', (req, res) => {
+  const fullPath = path.join(__dirname, '/angular-src/dist/angular-src/index.html');
+  console.log(' Fetching from.. ' + fullPath);
+  res.sendFile(fullPath);
 });
 
 // Start Server
-app.listen(port, () => {
-  console.log(`Listening at http://${host_name}:${port}`);
+app.listen(server_port, () => {
+  console.log('Server listening on port ' + server_port);
 });
