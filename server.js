@@ -29,14 +29,19 @@ const app = express();
 const users = require("./routes/users");
 
 // variable - Can edit which portname or port to host the website locally
-const server_port = process.env.PORT || 8080; 
+const server_port = process.env.PORT || 3000; 
 
 // Middleware
 app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'SECRET' })); // session secret
+app.use(session({ 
+  secret: process.env.SECRET || 'secret',
+  resave: true,
+  saveUninitialized: true,
+  maxAge: 3600000   // 1 hour (in milliseconds) 
+})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 
