@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/BiteSizedtreasures/website/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/BiteSizedtreasures/website/actions/workflows/codeql.yml)
+
 # back-end
 
 To Install packages (node_modules):
