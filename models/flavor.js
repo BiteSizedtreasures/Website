@@ -48,7 +48,25 @@ module.exports.getFlavorById = function (id, callback) {
   Flavor.findbyID(id, callback);
 };
 
-// Add the Falvor to the database
+// Add the Flavor to the database
 module.exports.addFlavor = function (newFlavor, callback) {
   newFlavor.save(callback); // saves the falvor info to the database
+};
+
+// Removes the Flavor from the database by Name
+module.exports.removeFlavor = function (name, callback) {
+  const query = { name: name};
+  Flavor.deleteOne(query, callback);
+}
+
+// Updates the flavor to the database
+module.exports.updateFlavor = function (name, callback) {
+  await Flavor.findOneAndUpdate(name, request.body, callback);
+  await Flavor.save();
+}
+
+// Finds Flavor by Name
+module.exports.getFlavorByName = function (name, callback) {
+  const query = {name : name}; 
+  Flavor.findOne(query, callback);
 };
