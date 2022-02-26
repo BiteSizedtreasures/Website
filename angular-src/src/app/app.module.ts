@@ -15,6 +15,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { AuthService } from './services/auth.service';
+import {ValidateService } from './services/validate.service';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -36,8 +38,9 @@ const appRoutes =[
     RouterModule.forRoot(appRoutes),
     AppRoutingModule,
     FlashMessagesModule.forRoot(),
+    FormsModule,
   ],
-  providers: [],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

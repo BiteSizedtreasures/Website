@@ -1,1 +1,26 @@
 <p>menu works!</p>
+
+<br>
+
+<form (submit)="OnItemSubmit()">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="name" name="name" placeholder="Enter name" autocomplete="on">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="allergins" name="allergins" placeholder="Enter allergins" autocomplete="on">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="ingredients" name="ingredients" placeholder="Enter ingredients" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="price" name="price" placeholder="Enter price" autocomplete="off">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="coating" name="coating" placeholder="Enter coating" autocomplete="on">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="decoration" name="decorations" placeholder="Enter decorations">
+    </div>
+    
+    <button (submit)="OnItemSubmit()" type="submit">Submit</button>
+<form>

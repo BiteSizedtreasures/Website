@@ -3,11 +3,7 @@ const bcrypt = require("bcryptjs");
 const config = require("../config/database");
 
 // User Scheme - represenation of what the databse will hold
-const FlavorSchema = mongoose.Schema({
-  image: {
-    type: String,
-    required: true,
-  },
+const ProductSchema = mongoose.Schema({
   name: {
     type: String,
     required: true, // sets that this field needs an input
@@ -25,48 +21,46 @@ const FlavorSchema = mongoose.Schema({
   price: {
     type: Number,
     default: 0,
-    validate(value) {
-      if (value < 0) throw new Error("Price can't be negative");
-    },
+    required: false,
   },
   coating: {
     type: String,
     required: true,
   },
-  decorations: {
+  decoration: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
 // Exports the model scheme of the database
-const Flavor = (module.exports = mongoose.model("Flavor", UserSchema));
+const Flavor = (module.exports = mongoose.model("Product", ProductSchema));
 
 // Find Flavor by ID -Used for pulling items
-module.exports.getFlavorById = function (id, callback) {
+module.exports.getProductById = function (id, callback) {
   // Finds the flavor using the paramater id
   Flavor.findbyID(id, callback);
 };
 
 // Add the Flavor to the database
-module.exports.addFlavor = function (newFlavor, callback) {
-  newFlavor.save(callback); // saves the falvor info to the database
+module.exports.addProduct = function (newProduct, callback) {
+  newProduct.save(callback); // saves the falvor info to the database
 };
 
 // Removes the Flavor from the database by Name
-module.exports.removeFlavor = function (name, callback) {
+module.exports.removeProduct = function (name, callback) {
   const query = { name: name };
   Flavor.deleteOne(query, callback);
 };
 
 // Updates the flavor to the database
-module.exports.updateFlavor = function (name, callback) {
-  await Flavor.findOneAndUpdate(name, request.body, callback);
-  await Flavor.save();
+module.exports.updateProduct = function (name, callback) {
+  Flavor.findOneAndUpdate(name, request.body, callback);
+  Flavor.save();
 };
 
 // Finds Flavor by Name
-module.exports.getFlavorByName = function (name, callback) {
+module.exports.getProductByName = function (name, callback) {
   const query = { name: name };
   Flavor.findOne(query, callback);
 };
