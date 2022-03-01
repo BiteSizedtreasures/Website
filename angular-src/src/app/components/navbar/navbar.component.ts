@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, RouterModule} from '@angular/router';
+import {FlashMessagesService } from 'flash-messages-angular';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
+  navbarOpen = false;
 
 }

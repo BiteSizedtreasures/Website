@@ -13,17 +13,20 @@ import { AppComponent } from './app.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component'
+
 const appRoutes =[
-  { path: '', component: HomeComponent},
+  { path: 'home', component: HomeComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
