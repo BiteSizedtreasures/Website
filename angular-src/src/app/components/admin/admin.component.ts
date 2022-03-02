@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  //selectFile(event) { //Angular 8
+  // Renders the inputted image {Add Product}
 	selectFile(event: any) { //Angular 11, for stricter type
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
 			this.msg = 'You must select an image';
@@ -55,6 +55,12 @@ export class AdminComponent implements OnInit {
 			this.url = reader.result; 
 		}
 	}
+
+  // Toggle through Functions
+  showTab = 1;
+  tabToggle(index: number) {
+    this.showTab = index;
+  }
 
   OnItemSubmit() {
     const item = {

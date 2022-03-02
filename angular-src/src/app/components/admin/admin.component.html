@@ -3,12 +3,13 @@
   <div class="w-64">
     <!-- nav -->
     <nav>
-      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Add Product</a>
-      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Edit Product</a>
-      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Delete Product</a>
+      <a  (click)="tabToggle(1)" class="block py-2 5 px-4 hover:bg-brown">Add Product</a>
+      <a  (click)="tabToggle(2)" class="block py-2 5 px-4 hover:bg-brown">Edit Product</a>
+      <a  (click)="tabToggle(3)" class="block py-2 5 px-4 hover:bg-brown">Delete Product</a>
     </nav>
   </div>
-<div class="w-full max-w-s">
+  <!-- Add Product -->
+<div *ngIf="showTab == 1" class="w-full max-w-s">
   <form (submit)="OnItemSubmit()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
@@ -114,8 +115,18 @@
       </button>
     </div>
   </form>
+
+
   <p class="text-center text-gray-500 text-xs">
     &copy;2022 Bite Sized Treasures Corp. All rights reserved.
   </p>
+</div>
+
+<div *ngIf="showTab == 2">
+  <h2> Lorem ipsum 2</h2>
+</div>
+
+<div *ngIf="showTab == 3">
+  <h2> Lorem ipsum 3</h2>
 </div>
 </div>
