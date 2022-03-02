@@ -2,7 +2,7 @@ require("dotenv").config();
 
 // Code Dependencies - Including packages and libraries
 const express = require("express");
-const session = require('express-session');
+const session = require("express-session");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -27,37 +27,47 @@ mongoose.connection.on("error", (err) => {
 const app = express();
 // Routes for database - directs to functions for each data block
 const users = require("./routes/users");
+const products = require("./routes/products");
 
 // variable - Can edit which portname or port to host the website locally
-const server_port = process.env.PORT || 3000; 
-
+const server_port = process.env.PORT || 8080;
+// const server_host = process.env.HOST_NAME || "localhost";
 // Middleware
 app.use(cors());
-app.options('*', cors());
+app.options("*", cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ 
-  secret: process.env.SECRET || 'secret',
-  resave: true,
-  saveUninitialized: true,
-  maxAge: 3600000   // 1 hour (in milliseconds) 
-})); // session secret
+app.use(
+  session({
+    secret: process.env.SECRET || "secret",
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 3600000, // 1 hour (in milliseconds)
+  })
+); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Use '/users' for all our user route functions
 app.use("/users", users);
+app.use("/products", products);
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname + '/angular-src/dist/angular-src')));
+app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src")));
 
-app.get('/*', (req, res) => {
-  const fullPath = path.join(__dirname, '/angular-src/dist/angular-src/index.html');
-  console.log(' Fetching from.. ' + fullPath);
+app.get("/*", (req, res) => {
+  const fullPath = path.join(
+    __dirname,
+    "/angular-src/dist/angular-src/index.html"
+  );
+  console.log(" Fetching from.. " + fullPath);
   res.sendFile(fullPath);
 });
 
 // Start Server
 app.listen(server_port, () => {
-  console.log('Server listening on port ' + server_port);
+  // console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+  console.log("Server listening on port " + server_port);
 });
+
+// test

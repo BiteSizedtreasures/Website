@@ -1,0 +1,121 @@
+<div class="relative min-h-screen flex">
+  <!-- Sidebar -->
+  <div class="w-64">
+    <!-- nav -->
+    <nav>
+      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Add Product</a>
+      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Edit Product</a>
+      <a href="/admin" class="block py-2 5 px-4 hover:bg-brown">Delete Product</a>
+    </nav>
+  </div>
+<div class="w-full max-w-s">
+  <form (submit)="OnItemSubmit()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="name"
+        id="name"
+        type="text"
+        placeholder="Enter name"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+        Price
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="price"
+        id="price"
+        type="number"
+        placeholder="Enter price"
+      />
+    </div>
+    <div class="mb-6">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="ingredients"
+      >
+        Ingredients
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="ingredients"
+        id="ingredients"
+        type="text"
+        placeholder="Enter ingredients"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="allergins">
+        Allergins
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="allergins"
+        id="allergins"
+        type="text"
+        placeholder="Enter allergins"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="coating">
+        Coating
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="coating"
+        id="allergins"
+        type="text"
+        placeholder="Enter coating"
+      />
+    </div>
+    <div class="mb-6">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="decorations"
+      >
+        Decorations
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        [(ngModel)]="decoration"
+        id="decoration"
+        type="text"
+        placeholder="Enter decorations"
+      />
+    </div>
+    <div style="text-align: center">
+      <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+      <div><img [src]="url" *ngIf="url"></div>
+    </div>
+      <label class="block">
+        <span class="sr-only">Choose profile photo</span>
+        <input type="file" (change)="selectFile($event)" class="block w-full text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-violet-50 file:text-violet-700
+          hover:file:bg-violet-100
+        "/>
+      </label>
+      
+      <br>
+    <div class="flex items-center justify-between">
+      <button
+        (submit)="OnItemSubmit()"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        Add Item
+      </button>
+    </div>
+  </form>
+  <p class="text-center text-gray-500 text-xs">
+    &copy;2022 Bite Sized Treasures Corp. All rights reserved.
+  </p>
+</div>
+</div>
