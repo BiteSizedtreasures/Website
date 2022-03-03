@@ -74,7 +74,7 @@ export class AdminComponent implements OnInit {
 
     // Required fields
     if(!this.validateService.validateMenu(item)) {
-      this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'alert-danger', timeout:3000});
+      this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
 
@@ -82,8 +82,10 @@ export class AdminComponent implements OnInit {
     this.authService.addItem(item).subscribe((data: any) => {
       if(data.success) {
         this.flashMessage.show('Item was added successfully.',{cssClass: 'alert-success', timeout:3000});
+        this.router.navigate(['/home']);
       } else {
         this.flashMessage.show('Something went wrong.', {cssClass: 'alert-danger', timeout:3000});
+        this.router.navigate(['/admin']);
       }
     });
   }

@@ -25,7 +25,7 @@ const ProductSchema = mongoose.Schema({
   },
   coating: {
     type: String,
-    required: true,
+    required: false,
   },
   decoration: {
     type: String,

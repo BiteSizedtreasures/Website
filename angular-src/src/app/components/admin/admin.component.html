@@ -16,8 +16,9 @@
         Name
       </label>
       <input
+        [(ngModel)]="name" 
+        name="name"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        [(ngModel)]="name"
         id="name"
         type="text"
         placeholder="Enter name"
@@ -28,23 +29,22 @@
         Price
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         [(ngModel)]="price"
+        name="price"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="price"
         type="number"
         placeholder="Enter price"
       />
     </div>
     <div class="mb-6">
-      <label
-        class="block text-gray-700 text-sm font-bold mb-2"
-        for="ingredients"
-      >
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="ingredients">
         Ingredients
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         [(ngModel)]="ingredients"
+        name="ingredients"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="ingredients"
         type="text"
         placeholder="Enter ingredients"
@@ -55,8 +55,9 @@
         Allergins
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         [(ngModel)]="allergins"
+        name="allergins"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="allergins"
         type="text"
         placeholder="Enter allergins"
@@ -67,8 +68,9 @@
         Coating
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         [(ngModel)]="coating"
+        name="coating"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="allergins"
         type="text"
         placeholder="Enter coating"
@@ -82,14 +84,15 @@
         Decorations
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         [(ngModel)]="decoration"
+        name="decoration"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="decoration"
         type="text"
         placeholder="Enter decorations"
       />
     </div>
-    <div style="text-align: center">
+    <!-- <div style="text-align: center">
       <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
       <div><img [src]="url" *ngIf="url"></div>
     </div>
@@ -102,14 +105,14 @@
           file:bg-violet-50 file:text-violet-700
           hover:file:bg-violet-100
         "/>
-      </label>
+      </label> -->
       
       <br>
     <div class="flex items-center justify-between">
       <button
         (submit)="OnItemSubmit()"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="button"
+        type="submit"
       >
         Add Item
       </button>
@@ -124,9 +127,16 @@
 
 <div *ngIf="showTab == 2">
   <h2> Lorem ipsum 2</h2>
+  <h2> Create search bar</h2>
+  <h3> Use key words -First word to search through database and pull similarity results</h3>
+  <h3> Output Objects and allow user to click which to modify. Once they click, open a new page and have the add product format but fill in with exsiting data. If data is changed, saved to database and redirect to admin page.</h3>
+  
 </div>
 
 <div *ngIf="showTab == 3">
   <h2> Lorem ipsum 3</h2>
+  <h2> Create search bar</h2>
+  <h3> Use key words -First word to search through database and pull similarity results</h3>
+  <h3> Add a deletebutton for each object and if clicked, delete from database and redirect to admin page</h3>
 </div>
 </div>

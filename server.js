@@ -66,7 +66,7 @@ app.get("/*", (req, res) => {
 
 // Start Server
 app.listen(server_port, () => {
-  // console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+  console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
   console.log("Server listening on port " + server_port);
 });
 
