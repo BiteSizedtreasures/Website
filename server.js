@@ -38,9 +38,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET || "secret",
-    resave: true,
-    saveUninitialized: true,
-    maxAge: 3600000, // 1 hour (in milliseconds)
+    // resave: true,
+    // saveUninitialized: true,
+    // maxAge: 3600000, // 1 hour (in milliseconds)
   })
 ); // session secret
 app.use(passport.initialize());
