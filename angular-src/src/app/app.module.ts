@@ -18,7 +18,7 @@ import { AuthService } from './services/auth.service';
 import {ValidateService } from './services/validate.service';
 
 const appRoutes =[
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
