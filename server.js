@@ -34,7 +34,7 @@ mongoose.connect(config.database) // database is stores in the config file
 app.use(cors());
 app.options("*", cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET || "secret",
@@ -69,5 +69,3 @@ app.listen(server_port, () => {
   // console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
   console.log("Server listening on port " + server_port);
 });
-
-// test
