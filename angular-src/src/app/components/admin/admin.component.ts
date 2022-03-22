@@ -25,8 +25,6 @@ export class AdminComponent implements OnInit {
   msg = "";
   posts: Product[] = [];
   private postsSub: Subscription;
-  url: any;
-  msg = "";
 
   constructor(
     private flashMessage: FlashMessagesService,
