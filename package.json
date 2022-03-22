@@ -36,7 +36,20 @@
     "passport": "^0.5.2",
     "passport-jwt": "*",
     "path": "^0.12.7",
-    "underscore": "^1.13.2"
+    "underscore": "^1.13.2",
+    "@angular/animations": "~13.1.0",
+    "@angular/common": "~13.1.0",
+    "@angular/compiler": "~13.1.0",
+    "@angular/core": "~13.1.0",
+    "@angular/forms": "~13.1.0",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
+    "@angular/router": "~13.1.0",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "flash-messages-angular": "^4.0.1",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "mocha": "^9.2.1",
