@@ -15,7 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthService } from './services/auth.service';
-import {ValidateService } from './services/validate.service';
+import { ValidateService } from './services/validate.service';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -32,6 +32,7 @@ const appRoutes =[
     NavbarComponent,
     MenuComponent,
     AdminComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
