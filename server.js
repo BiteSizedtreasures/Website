@@ -53,7 +53,7 @@ app.use("/products", products);
 // Set Static Folder
 
 // app.use(express.static(path.join(__dirname + "/public/"))); // Used for Production
-app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
+app.use(express.static(path.join(__dirname + "/public"))); // Used for deployment
 
 app.get("/*", (req, res) => {
   // const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
