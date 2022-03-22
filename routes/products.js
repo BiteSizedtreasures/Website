@@ -29,11 +29,11 @@ router.post("/", (req, res, next) => {
     coating: req.body.coating,
     decoration: req.body.decoration,
   });
-
   if (Product_object.save()) { // If the product information is saved
     res.json({ success: true, message: "Product successfully created." });
   } else { // If the product information is not saved in the database
     res.json({ success: false, message: "Product not created." });
+
   }
 });
 

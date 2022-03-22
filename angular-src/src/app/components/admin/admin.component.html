@@ -26,7 +26,7 @@
         Name
       </label>
       <input
-        [(ngModel)]="name"
+        [(ngModel)]="name" 
         name="name"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="name"
@@ -109,6 +109,9 @@
       <label for="image" class="block">
         <span class="sr-only">Choose photo</span>
         <input type="file" [(ngModel)]="image" name="image" id="image" (change)="selectFile($event)" class="block w-full text-sm text-slate-500
+      <label class="block">
+        <span class="sr-only">Choose profile photo</span>
+        <input type="file" (change)="selectFile($event)" class="block w-full text-sm text-slate-500
           file:mr-4 file:py-2 file:px-4
           file:rounded-full file:border-0
           file:text-sm file:font-semibold
@@ -121,8 +124,7 @@
       <button
         (submit)="OnItemSubmit()"
         class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="submit"
-      >
+        type="submit">
         Add Item
       </button>
     </div>
@@ -139,14 +141,12 @@
     <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
       type="search" name="search" placeholder="Search">
     <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-
     </button>
   </div>
   <h2> Lorem ipsum 2</h2>
   <h2> Create search bar</h2>
   <h3> Use key words -First word to search through database and pull similarity results</h3>
   <h3> Output Objects and allow user to click which to modify. Once they click, open a new page and have the add product format but fill in with exsiting data. If data is changed, saved to database and redirect to admin page.</h3>
-
 </div>
 
 <div *ngIf="showTab == 3" class="w-full max-w-s">
@@ -155,4 +155,4 @@
   <h3> Use key words -First word to search through database and pull similarity results</h3>
   <h3> Add a deletebutton for each object and if clicked, delete from database and redirect to admin page</h3>
 </div>
-</div>
+

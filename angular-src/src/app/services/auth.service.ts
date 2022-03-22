@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { Product } from '../components/admin/product.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +38,5 @@ export class AuthService {
         this.postsUpdated.next([...this.posts]);
       })
   }
-
 
 }

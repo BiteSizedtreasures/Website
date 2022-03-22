@@ -25,6 +25,8 @@ export class AdminComponent implements OnInit {
   msg = "";
   posts: Product[] = [];
   private postsSub: Subscription;
+  url: any;
+  msg = "";
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -40,7 +42,6 @@ export class AdminComponent implements OnInit {
     // Fetch All Products
     this.authService.fetchAllProducts();
   }
-
   // Renders the inputted image {Add Product}
 	selectFile(event: any) { //Angular 11, for stricter type
 		if(!event.target.files[0] || event.target.files[0].length == 0) {
@@ -49,7 +50,6 @@ export class AdminComponent implements OnInit {
 		}
 
 		var mimeType = event.target.files[0].type;
-
 		if (mimeType.match(/image\/*/) == null) {
 			this.msg = "Only images are supported";
 			return;
