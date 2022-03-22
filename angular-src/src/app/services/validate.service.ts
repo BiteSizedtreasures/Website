@@ -8,7 +8,7 @@ export class ValidateService {
   constructor() { }
 
   // Validates if any input is empty.
-  validateMenu(info : any) { 
+  validateAddProduct(info : any) {
     if(
       info.name == undefined ||
       info.allergins == undefined ||
