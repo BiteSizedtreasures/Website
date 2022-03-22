@@ -3,7 +3,10 @@ module.exports = {
       "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: { },
+    colors: {
+      'taupe': '#FFF5DA', 
+    },
+    extend: {},
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
