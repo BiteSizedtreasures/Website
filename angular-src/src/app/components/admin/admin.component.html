@@ -29,11 +29,13 @@
         </div>
         <div class="py-4 px-4 bg-white">
           <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-          <div class="py-4 px-4 hover:bg-brown">
+          <div class="grid gap-x-8 gap-y-4">
+          <button class=" hover:bg-brown">
             <p>Edit Button</p>
-          </div>
-          <div class="py-4 px-4 hover:bg-brown">
+          </button>
+          <button class="px-2 hover:bg-brown" (click)="onDelete(product._id)">
             <p>Delete Button</p>
+          </button>
           </div>
         </div>
       </div>

@@ -33,4 +33,12 @@ export class AuthService {
     })
     return products;
   }
+
+  deleteProduct(productId: string) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(baseUrl + 'products/' + productId, {
+      headers: headers
+    })
+  }
 }

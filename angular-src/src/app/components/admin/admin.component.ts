@@ -20,8 +20,6 @@ export class AdminComponent implements OnInit {
   price: Number;
   coating: String;
   decoration: String;
-  url: any;
-  msg = "";
   allProducts: any = [];
 
   constructor(
@@ -53,6 +51,18 @@ export class AdminComponent implements OnInit {
     productsObservable.subscribe((data: any) => {
       data = Object.values(data)
       this.allProducts = data
+    })
+  }
+
+  onDelete(postID: string) {
+    const deleteObservable = this.authService.deleteProduct(postID)
+    deleteObservable.subscribe((data: any) => {
+      if(data.success) {
+        this.flashMessage.show('Product Deleted',{cssClass: 'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+        this.router.navigate(['/admin']);
+      } else {
+        this.flashMessage.show('Something went wrong.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+      }
     })
   }
 
