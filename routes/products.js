@@ -9,13 +9,15 @@ router.get("/new", async (req, res, next) => {
 
 // Fetch all product route
 router.get("/", async (req, res) => {
-  Product.find().then((documents) => {
-    console.log(documents); 
-    res.status(200).json({
-      message: "Posts fetched successfully!",
-      posts: documents,
-    }); 
-  });
+   Product.find({}, (err, product) => {
+    
+    // if(!product.length) {
+    //   res.json({ success: false, message: "Products not found." });
+    // }
+    res.json({ success: true, data: product });
+  })
+  .clone()
+  .catch(err => console.log(err));
 });
 
 // Create a product route
@@ -29,7 +31,7 @@ router.post("/", (req, res, next) => {
     coating: req.body.coating,
     decoration: req.body.decoration,
   });
-
+  
   if (Product_object.save()) { // If the product information is saved
     res.json({ success: true, message: "Product successfully created." });
   } else { // If the product information is not saved in the database

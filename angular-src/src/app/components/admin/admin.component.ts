@@ -20,11 +20,9 @@ export class AdminComponent implements OnInit {
   price: Number;
   coating: String;
   decoration: String;
-  image: any;
   url: any;
   msg = "";
-  posts: Product[] = [];
-  private postsSub: Subscription;
+  allProducts: any = [];
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -37,37 +35,25 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Fetch All Products
-    this.authService.fetchAllProducts();
+    this.fetchAllProducts();
   }
 
-  // Renders the inputted image {Add Product}
-	selectFile(event: any) { //Angular 11, for stricter type
-		if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
-			return;
-		}
-
-		var mimeType = event.target.files[0].type;
-
-		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
-			return;
-		}
-
-		var reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
-
-		reader.onload = (_event) => {
-			this.msg = "";
-			this.url = reader.result;
-		}
-	}
 
   // Toggle through Functions
   showTab =0;
   tabToggle(index: number) {
+    if (this.showTab == 0){
+      this.fetchAllProducts();
+    }
     this.showTab = index;
+  }
+
+  fetchAllProducts() {
+    const productsObservable = this.authService.fetchAllProducts()
+    productsObservable.subscribe((data: any) => {
+      data = Object.values(data)
+      this.allProducts = data
+    })
   }
 
   OnItemSubmit() {
@@ -78,7 +64,6 @@ export class AdminComponent implements OnInit {
       price: this.price,
       coating: this.coating,
       decoration: this.decoration,
-      image: this.image
     }
 
     // Required fields
@@ -97,6 +82,6 @@ export class AdminComponent implements OnInit {
         this.router.navigate(['/admin']);
       }
     });
-
   }
+
 }
