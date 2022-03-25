@@ -41,17 +41,20 @@ export class AuthService {
     return product;
   }
 
+  updateProductbyID(productID: string, item : any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const product = this.http.put(baseUrl + 'products/' + productID, item, {
+      headers: headers
+    });
+    return product;
+  }
+
   deleteProduct(productId: string) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.delete(baseUrl + 'products/' + productId, {
       headers: headers
     })
-  }
-
-  updateProduct(id: string, item : any) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.put(baseUrl + 'products/' + id, item)
   }
 }

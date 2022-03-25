@@ -1,5 +1,6 @@
 <div class="w-full max-w-s">
   <form
+    (submit)="updateProductbyID()"
     method="POST"
     enctype="multipart/form-data"
     class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -9,6 +10,7 @@
         Name
       </label>
       <input
+        [(ngModel)]="name"
         type="text"
         name="name"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -22,6 +24,7 @@
         Price
       </label>
       <input
+        [(ngModel)]="price"
         name="price"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="price"
@@ -38,6 +41,7 @@
         Ingredients
       </label>
       <input
+        [(ngModel)]="ingredients"
         name="ingredients"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="ingredients"
@@ -54,6 +58,7 @@
         Allergins
       </label>
       <input
+        [(ngModel)]="allergins"
         name="allergins"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="allergins"
@@ -67,6 +72,7 @@
         Coating
       </label>
       <input
+        [(ngModel)]="coating"
         name="coating"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="allergins"
@@ -83,6 +89,7 @@
         Decorations
       </label>
       <input
+        [(ngModel)]="decoration"
         name="decoration"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
         id="decoration"
@@ -94,6 +101,7 @@
 
     <div class="flex items-center justify-between">
       <button
+        (submit)="updateProductbyID()"
         class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit"
       >

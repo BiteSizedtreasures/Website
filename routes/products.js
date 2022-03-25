@@ -24,6 +24,19 @@ router.get("/:id", async (req, res) => {
   .catch(err => console.log(err));
 });
 
+// Update Product route
+router.put("/:id", async (req, res) => {
+  await Product.findByIdAndUpdate({ _id: req.params.id }, {$set:req.body}, {new:true}, (err, product) => {
+    if(err) {
+      res.json({ success: false, message:"Product couldn't be updated." });
+    } else {
+      res.json({ success: true, data: product, message:"Product updated." });
+    }
+  })
+  .clone()
+  .catch(err => console.log(err));
+});
+
 
 // Create a product route
 router.post("/", async (req, res, next) => {
@@ -43,6 +56,7 @@ router.post("/", async (req, res, next) => {
     res.json({ success: false, message: "Product not created." });
   }
 });
+
 
 // Delete a product route
 router.delete("/:id", async (req, res) => {
