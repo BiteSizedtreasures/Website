@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, RouterModule} from '@angular/router';
-import {FlashMessagesService } from 'flash-messages-angular';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-navbar',

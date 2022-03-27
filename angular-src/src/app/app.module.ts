@@ -22,7 +22,7 @@ const appRoutes =[
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent}
 ];
 @NgModule({
   declarations: [
@@ -30,16 +30,15 @@ const appRoutes =[
     HomeComponent,
     RegisterComponent,
     NavbarComponent,
+    LoginComponent,
     MenuComponent,
     AdminComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    AppRoutingModule,
     FlashMessagesModule.forRoot(),
     FormsModule,
   ],
