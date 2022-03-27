@@ -52,17 +52,23 @@ app.use("/products", products);
 
 // Set Static Folder
 
-// app.use(express.static(path.join(__dirname + "/public/"))); // Used for Production
-app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
-
-app.get("*", (req, res) => {
-  const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
+app.use(express.static(path.join(__dirname + "/public/")));
+app.get("/*", (req, res) => {
+  const fullPath = path.join(__dirname, "/public/index.html");
   console.log(" Fetching from.. " + fullPath);
   res.sendFile(fullPath);
 });
 
+// app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
+// app.get("*", (req, res) => {
+//   const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
+//   console.log(" Fetching from.. " + fullPath);
+//   res.sendFile(fullPath);
+// });
+
+
 // Start Server
 app.listen(server_port, () => {
-  // console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
-  console.log("Server listening on port " + server_port);
+  console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+  // console.log("Server listening on port " + server_port);
 });

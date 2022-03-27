@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Product } from '../components/admin/product.model';
+
+
+const baseUrl = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   item: any;
-  private posts: Product[] = [];
-  private postsUpdated = new Subject<Product[]>();
 
   constructor(
     private http: HttpClient
@@ -19,7 +17,7 @@ export class AuthService {
   addProduct(item : any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8080/products/', item, {
+    return this.http.post(baseUrl+ 'products/', item, {
       headers: headers,
     });
   }
@@ -27,16 +25,36 @@ export class AuthService {
   fetchAllProducts() {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.get<{ message: string, posts: any }>('http://localhost:8080/products/')
-      .pipe(map((postData: any) => {
-        return postData.posts.map((post: any) => {
-          return post.product;
-        })
-      }))
-      .subscribe(transformedPosts => {
-        this.posts = transformedPosts;
-        this.postsUpdated.next([...this.posts]);
-      })
+    const products = this.http.get(baseUrl + 'products/', {
+      responseType: 'json',
+      headers: headers
+    })
+    return products;
   }
 
+  fetchProductbyID(productID: string) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const product = this.http.get(baseUrl + 'products/' + productID, {
+      headers: headers
+    });
+    return product;
+  }
+
+  updateProductbyID(productID: string, item : any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const product = this.http.put(baseUrl + 'products/' + productID, item, {
+      headers: headers
+    });
+    return product;
+  }
+
+  deleteProduct(productId: string) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(baseUrl + 'products/' + productId, {
+      headers: headers
+    })
+  }
 }
