@@ -37,9 +37,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET || "secret",
-    // resave: true,
-    // saveUninitialized: true,
-    // maxAge: 3600000, // 1 hour (in milliseconds)
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 3600000, // 1 hour (in milliseconds)
   })
 ); // session secret
 app.use(passport.initialize());
@@ -59,7 +59,7 @@ if(server_port == 8080) {
   });
 } else {
   app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
-  app.get("*", (req, res) => {
+  app.get("/*", (req, res) => {
     const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
     console.log(" Fetching from.. " + fullPath);
     res.sendFile(fullPath);
