@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ValidateService } from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
-import { FlashMessagesService } from 'flash-messages-angular';
+import {FlashMessagesService } from 'flash-messages-angular';
 
 @Component({
   selector: 'app-admin-edit',
   templateUrl: './admin-edit.component.html',
-  styleUrls: ['./admin-edit.component.scss'],
+  styleUrls: ['./admin-edit.component.scss']
 })
 export class AdminEditComponent implements OnInit {
   name?: String;
@@ -62,6 +62,15 @@ export class AdminEditComponent implements OnInit {
             'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4',
           timeout: 3000,
         });
+    }
+
+
+    const productObservable = this.authService.updateProductbyID(this.id, item)
+    productObservable.subscribe((data: any) => {
+      if(data.success) {
+        this.flashMessage.show('Item was updated successfully.',{cssClass: 'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+      } else {
+        this.flashMessage.show('Something went wrong.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       }
     });
   }

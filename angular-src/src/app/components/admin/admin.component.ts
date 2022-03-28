@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private title: Title,
     private authService: AuthService,
-    private validateService: ValidateService
+    private validateService: ValidateService,
   ) {
     this.title.setTitle('Admin Page');
   }
@@ -31,11 +31,10 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAllProducts();
   }
-
   // Toggle All Products and Add Product
-  showTab = 0;
+  showTab =0;
   tabToggle(index: number) {
-    if (this.showTab == 0) {
+    if (this.showTab == 0){
       this.fetchAllProducts();
     }
     this.showTab = index;
@@ -67,6 +66,12 @@ export class AdminComponent implements OnInit {
         });
       }
     });
+    const productsObservable = this.authService.fetchAllProducts()
+    productsObservable.subscribe((data: any) => {
+      data = Object.values(data)
+      this.allProducts = data
+    })
+  }
   }
 
   OnItemSubmit() {
@@ -78,6 +83,7 @@ export class AdminComponent implements OnInit {
       coating: this.coating,
       decoration: this.decoration,
     };
+    }
 
     // Required fields
     if (!this.validateService.validateAddProduct(item)) {
@@ -107,4 +113,5 @@ export class AdminComponent implements OnInit {
       }
     });
   }
+
 }
