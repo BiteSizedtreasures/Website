@@ -72,7 +72,6 @@ export class AdminComponent implements OnInit {
       this.allProducts = data
     })
   }
-  }
 
   OnItemSubmit() {
     const item = {
@@ -83,7 +82,6 @@ export class AdminComponent implements OnInit {
       coating: this.coating,
       decoration: this.decoration,
     };
-    }
 
     // Required fields
     if (!this.validateService.validateAddProduct(item)) {

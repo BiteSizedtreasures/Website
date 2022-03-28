@@ -23,7 +23,7 @@ export class AdminEditComponent implements OnInit {
     private authService: AuthService,
     private validateService: ValidateService,
     private route: ActivatedRoute,
-    private flashMessage: FlashMessagesService
+    private flashMessage: FlashMessagesService,
   ) {}
 
   ngOnInit(): void {
@@ -48,8 +48,7 @@ export class AdminEditComponent implements OnInit {
       decoration: this.decoration,
     };
 
-    const productObservable = this.authService.updateProductbyID(this.id, item);
-    productObservable.subscribe((data: any) => {
+    const productObservable = this.authService.updateProductbyID(this.id, item).subscribe((data: any) => {
       if (data.success) {
         this.flashMessage.show('Item was updated successfully.', {
           cssClass:
@@ -57,20 +56,7 @@ export class AdminEditComponent implements OnInit {
           timeout: 3000,
         });
       } else {
-        this.flashMessage.show('Something went wrong.', {
-          cssClass:
-            'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4',
-          timeout: 3000,
-        });
-    }
-
-
-    const productObservable = this.authService.updateProductbyID(this.id, item)
-    productObservable.subscribe((data: any) => {
-      if(data.success) {
-        this.flashMessage.show('Item was updated successfully.',{cssClass: 'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
-      } else {
-        this.flashMessage.show('Something went wrong.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+        this.flashMessage.show('Something went wrong.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout: 3000 });
       }
     });
   }
