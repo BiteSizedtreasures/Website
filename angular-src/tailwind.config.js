@@ -1,5 +1,10 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+      ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+    },
     content: ['./src/**/*.{html,ts}',
     ],
     theme: {
