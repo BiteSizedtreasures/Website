@@ -1,5 +1,7 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
+  purge: {
+    enabled: true,
   content: [
       "./src/**/*.{html,ts}",
   ],
@@ -37,10 +39,11 @@ module.exports = {
       '5xl': '3rem',
       '6xl': '4rem',
       '7xl': '5rem',
-    }, 
+    },
     extend: {},
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
   ],
+  }
 }
