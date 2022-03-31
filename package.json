@@ -32,6 +32,7 @@
     "jsonwebtoken": "*",
     "moment": "^2.29.1",
     "mongoose": "^6.1.4",
+    "multer": "^1.4.4",
     "passport": "^0.5.2",
     "passport-jwt": "*",
     "path": "^0.12.7",

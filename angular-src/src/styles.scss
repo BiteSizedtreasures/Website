@@ -1,10 +1,12 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Salsa');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html, body {
-    font-family: Salsa, sans-serif;
     background-color: white;
+    font-family: Salsa, sans-serif;
+    background-color: #FFF5DA;
+    color: #5D534A;
 }
