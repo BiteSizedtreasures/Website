@@ -1,18 +1,5 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
-
-  content: [
-      "./src/**/*.{html,ts}",
-  ],
-  theme: {
-    colors: {
-      'taupe': '#FFF5DA', 
-    },
-    extend: {},
-  },
-  plugins: [],
-}
-
     purge: {
       enabled: true,
       content: ['./src/**/*.{html,ts}']
