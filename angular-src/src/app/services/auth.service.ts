@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-//const baseUrl = 'http://localhost:8080/';
-
 // const baseUrl = 'http://localhost:8080/'; // Development
 const baseUrl = ''; // Production
 @Injectable({
