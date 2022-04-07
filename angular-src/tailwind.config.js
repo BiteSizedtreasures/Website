@@ -43,8 +43,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
   ],
-}
-    purge: {
+ purge: {
       enabled: true,
       content: ['./src/**/*.{html,ts}']
     },
@@ -97,4 +96,4 @@ module.exports = {
     plugins: [
       require('@tailwindcss/aspect-ratio'),
     ]
-};
+}
