@@ -12,6 +12,18 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
+  addNewUser(user: any){
+    let head = new HttpHeaders();
+    head.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl+ 'users/', user, {headers: head});
+  }
+
+  authUser(user: any){
+    let head = new HttpHeaders();
+    head.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'users/', {headers:head});
+  }
+
   addProduct(item : any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
