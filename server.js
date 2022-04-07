@@ -20,7 +20,6 @@ const products = require("./routes/products");
 // variable - Can edit which portname or port to host the website locally
 const server_port = process.env.PORT || 8080;
 
-
 // Connecting to Mongo database
 mongoose.connect(config.database) // database is stores in the config file
   .then(() => { // On Connection - Checks for connection
@@ -38,9 +37,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SECRET || "secret",
-    // resave: true,
-    // saveUninitialized: true,
-    // maxAge: 3600000, // 1 hour (in milliseconds)
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 3600000, // 1 hour (in milliseconds)
   })
 ); // session secret
 app.use(passport.initialize());
@@ -51,24 +50,28 @@ app.use("/users", users);
 app.use("/products", products);
 
 // Set Static Folder
-
-app.use(express.static(path.join(__dirname + "/public/")));
-app.get("/*", (req, res) => {
-  const fullPath = path.join(__dirname, "/public/index.html");
-  console.log(" Fetching from.. " + fullPath);
-  res.sendFile(fullPath);
-});
-
-// app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
-// app.get("*", (req, res) => {
-//   const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
-//   console.log(" Fetching from.. " + fullPath);
-//   res.sendFile(fullPath);
-// });
+if(server_port == 8080) {
+  app.use(express.static(path.join(__dirname + "/public/")));
+  app.get("/*", (req, res) => {
+    const fullPath = path.join(__dirname, "/public/index.html");
+    console.log(" Fetching from.. " + fullPath);
+    res.sendFile(fullPath);
+  });
+} else {
+  app.use(express.static(path.join(__dirname + "/angular-src/dist/angular-src"))); // Used for deployment
+  app.get("/*", (req, res) => {
+    const fullPath = path.join(__dirname,"/angular-src/dist/angular-src/index.html");
+    console.log(" Fetching from.. " + fullPath);
+    res.sendFile(fullPath);
+  });
+}
 
 
 // Start Server
 app.listen(server_port, () => {
-  console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
-  // console.log("Server listening on port " + server_port);
+  if(server_port == 8080) { // development status
+    console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+  } else { // deployment status
+    console.log("Server listening on port " + server_port);  
+  }
 });
