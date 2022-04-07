@@ -23,6 +23,13 @@ export class ValidateService {
     }
   }
 
+  validateUser(user: any) {
+    if( user.user == undefined || user.pass == undefined && !this.validateEmail(user.user)){
+      return false;
+    }
+    return true;
+  }
+
   // Validates if email is in correct format
   validateEmail(email : any) {
     const re =

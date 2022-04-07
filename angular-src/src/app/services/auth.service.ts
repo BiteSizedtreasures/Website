@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
 const baseUrl = 'http://localhost:8080/';
 
 @Injectable({
@@ -13,6 +12,18 @@ export class AuthService {
   constructor(
     private http: HttpClient
   ) {}
+
+  addNewUser(user: any){
+    let head = new HttpHeaders();
+    head.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl+ 'users/', user, {headers: head});
+  }
+
+  authUser(user: any){
+    let head = new HttpHeaders();
+    head.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'users/', {headers:head});
+  }
 
   addProduct(item : any) {
     let headers = new HttpHeaders();

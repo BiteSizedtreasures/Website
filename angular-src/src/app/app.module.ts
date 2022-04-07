@@ -24,7 +24,6 @@ const appRoutes =[
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'admin', component: AdminComponent},
   { path: 'product/:id', component: AdminEditComponent},
 ];
 @NgModule({
