@@ -14,8 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AdminEditComponent } from './components/admin-edit/admin-edit.component';
 import { AuthService } from './services/auth.service';
-import {ValidateService } from './services/validate.service';
+import { ValidateService } from './services/validate.service';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -23,6 +24,7 @@ const appRoutes =[
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
   { path: 'admin', component: AdminComponent},
+  { path: 'product/:id', component: AdminEditComponent},
 ];
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ const appRoutes =[
     NavbarComponent,
     MenuComponent,
     AdminComponent,
+    LoginComponent,
+    AdminEditComponent,
   ],
   imports: [
     BrowserModule,
