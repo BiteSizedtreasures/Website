@@ -17,10 +17,11 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminEditComponent } from './components/admin-edit/admin-edit.component';
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'register', component: LoginComponent},
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
   { path: 'admin', component: AdminComponent},
@@ -37,6 +38,7 @@ const appRoutes =[
     AdminComponent,
     LoginComponent,
     AdminEditComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

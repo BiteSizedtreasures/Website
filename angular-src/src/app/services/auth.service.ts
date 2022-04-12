@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { tap, delay } from 'rxjs/operators';
+import { LoginComponent } from '../components/login/login.component';
 
 //const baseUrl = 'http://localhost:8080/'; // Development
 const baseUrl = ''; // Production
@@ -8,20 +11,49 @@ const baseUrl = ''; // Production
 })
 export class AuthService {
   item: any;
+  user: any;
+  tokAuth: any;
+  isUserLoggedIn: boolean = false;
+  
   constructor(
     private http: HttpClient
   ) {}
 
+  logout(): void {
+    this.isUserLoggedIn = false;
+       localStorage.removeItem('isUserLoggedIn'); 
+  }
+
+  login(user: any): Observable<boolean> {
+    console.log(user);
+    this.isUserLoggedIn = user == 'user';
+    localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
+    
+    return of(this.isUserLoggedIn).pipe(
+      delay(1000),
+      tap(val => { 
+         console.log("Is User Authentication is successful: " + val); 
+      })
+    );
+  }
+
   addNewUser(user: any){
     let head = new HttpHeaders();
     head.append('Content-Type', 'application/json');
-    return this.http.post(baseUrl+ 'users/', user, {headers: head});
+    return this.http.post(baseUrl+ 'users/login', user, {headers: head});
+  }
+
+  storeUserData(tok: any, user: any){
+    localStorage.setItem('id_token', tok);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.tokAuth = tok;
+    this.user = user;
   }
 
   authUser(user: any){
     let head = new HttpHeaders();
     head.append('Content-Type', 'application/json');
-    return this.http.post(baseUrl + 'users/', {headers:head});
+    return this.http.post(baseUrl + 'users/authenticate', user, {headers:head});
   }
 
   addProduct(item : any) {
