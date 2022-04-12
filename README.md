@@ -17,4 +17,4 @@ To access MongoDB:
 To understand how the back-end was setup, you can watch the setup video: https://www.youtube.com/watch?v=DQ9pZ2NKXRo&list=PLillGF-RfqbZMNtaOXJQiDebNXjVapWPZ&index=2
 
 To build production file for angular-src:
-    type: "ng build --prod --configuration production"
+    type: "ng build --prod"

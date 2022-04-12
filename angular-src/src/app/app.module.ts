@@ -18,6 +18,9 @@ import { AdminEditComponent } from './components/admin-edit/admin-edit.component
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 import { LogoutComponent } from './components/logout/logout.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ContactComponent } from './contact/contact.component';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -26,6 +29,9 @@ const appRoutes =[
   { path: 'menu', component: MenuComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'product/:id', component: AdminEditComponent},
+  { path: 'cart', component: CartComponent},
+  { path: 'calendar', component: CalendarComponent},
+  { path: 'contact', component: ContactComponent},
 ];
 @NgModule({
   declarations: [
@@ -39,6 +45,9 @@ const appRoutes =[
     LoginComponent,
     AdminEditComponent,
     LogoutComponent,
+    CartComponent,
+    CalendarComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
