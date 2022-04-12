@@ -49,9 +49,9 @@
                                                     type="text"
                                                     class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter email"
-                                                    [(ngModel)]="username"
-                                                    name = "user"
-                                                    id = "user">
+                                                    [(ngModel)]="email"
+                                                    name = "email"
+                                                    id = "email">
                                             </div>
                                             <div class="relative w-full mb-3">
                                                 <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -60,13 +60,13 @@
                                                     type="text" 
                                                     class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter password"
-                                                    [(ngModel)] = "pass"
-                                                    name = "pass"
-                                                    id = "pass">
+                                                    [(ngModel)] = "password"
+                                                    name = "password"
+                                                    id = "password">
                                             </div>
                                             <div class="text-center mt-6">
                                                 <button 
-                                                    (ngSubmit)="OnUserSignUp"
+                                                    (submit)="OnUserSignUp()"
                                                     class="font-serif bg-bluesign text-white active:bg-bluesign text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s;"
                                                     type="submit">
                                                     Register</button>
@@ -87,9 +87,9 @@
                                                 type="text"
                                                 class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                 placeholder="Enter email"
-                                                [(ngModel)]="username"
-                                                name = "user"
-                                                id = "user">
+                                                [(ngModel)]="email"
+                                                name = "email"
+                                                id = "email">
                                         </div>
                                         <div class="relative w-full mb-3">
                                             <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -98,9 +98,9 @@
                                                 type="text" 
                                                 class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                 placeholder="Enter password"
-                                                [(ngModel)] = "pass"
-                                                name = "pass"
-                                                id = "pass">
+                                                [(ngModel)] = "password"
+                                                name = "password"
+                                                id = "password">
                                         </div>
                                         <div>
                                             <label class="inline-flex items-center cursor-pointer">

@@ -13,10 +13,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  username?: string;
-  pass?: string;
-  firstname?: string;
-  lastname?: string;
+  email: string; // ? say is an auto-initilizer to blank string 
+  password: string;
+  firstname: string;
+  lastname: string;
   allUsers: any = [];
   formData?: FormGroup;
 
@@ -30,34 +30,29 @@ export class LoginComponent implements OnInit {
     this.title.setTitle('Login Page');
   }
 
-  ngOnInit() {
-    this.formData = new FormGroup({
-      username: new FormControl("user"),
-      pass: new FormControl("user"),
-    });
-  }
+  ngOnInit() {  }
 
   showTab = 0;
   toggle(index: number) {
     this.showTab = index;
   }
 
-  OnUserSignUp() {
+  OnUserSignUp() { //register function for the frontend
     const user = {
-      username: this.username,
-      pass: this.pass,
+      email: this.email,
+      password: this.password,
       firstname: this.firstname,
       lastname: this.lastname,
     }
 
     // Required fields
-    if(this.validateService.validateUser(user)) {
+    if(!this.validateService.validateUser(user)) {
       this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
 
     // Add user to database
-    this.authService.addNewUser(user).subscribe((data: any) => {
+    this.authService.registerUser(user).subscribe((data: any) => {
       if(data.success) {
         this.flashMessage.show('User was successfully registered.',{cssClass: 'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
         this.router.navigate(['/login']);
@@ -72,12 +67,12 @@ export class LoginComponent implements OnInit {
 
   OnUserSignIn(data: any) {
     const user = {
-      username: data.username,
-      pass: data.pass,
+      email: data.email,
+      password: data.password,
     }
 
     // Required fields
-    if(this.validateService.validateUser(user)) {
+    if(!this.validateService.validateUser(user)) {
       this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
