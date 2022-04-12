@@ -8,14 +8,14 @@
                     <div class="flex-auto px-4 lg:px-10 py-8 pt-0 bg-lite-pink/50">
                         <div class="grid grid-cols-2 gap-0">
                             <!-- Login/Register Buttons -->
-                            <a (click) = "toggle(1)" class = "text-center block p-1 text-4xl hover:bg-pink font-serif bg-base-100">Login</a>
-                            <a (click)= "toggle(0)" class = "text-center block p-1 text-4xl hover:bg-pink font-serif bg-base-100">Register</a>
+                            <button (click) = "toggle(1)" class = "text-center block p-1 text-4xl hover:text-bage font-serif bg-base-100">Login</button>
+                            <button (click)= "toggle(0)" class = "text-center block p-1 text-4xl hover:text-bage font-serif bg-base-100">Register</button>
                         </div>
                             <hr class="flex content-center pt-2">
                             <!-- register page -->
                                 <div *ngIf="showTab == 0" class="w-full max-w-s">
-                                    <form 
-                                        (submit) = "OnUserSignUp"
+                                    <form
+                                        (submit) = "OnUserSignUp()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
                                         class = "bg-lite-pink">
@@ -28,7 +28,8 @@
                                                     placeholder="Enter First Name"
                                                     [(ngModel)] = "firstname"
                                                     name = "firstname"
-                                                    id = "firstname">
+                                                    id = "firstname"
+                                                    >
                                             </div>
                                             <div class="relative w-full mb-3">
                                                 <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -65,7 +66,7 @@
                                             </div>
                                             <div class="text-center mt-6">
                                                 <button 
-                                                    (submit)="OnUserSignUp"
+                                                    (ngSubmit)="OnUserSignUp"
                                                     class="font-serif bg-bluesign text-white active:bg-bluesign text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s;"
                                                     type="submit">
                                                     Register</button>
@@ -74,8 +75,8 @@
                                 </div>
                                 <!-- login page -->
                                 <div *ngIf="showTab == 1" class="w-full max-w-s">
-                                    <form 
-                                        (submit) = "OnUserSignIn"
+                                    <form
+                                        (submit) = "OnUserSignIn(formData)"
                                         method = "POST"
                                         enctype = "multipart/form-data"
                                         class = "bg-lite-pink">
@@ -107,7 +108,7 @@
                                         </div>
                                         <div class="text-center mt-6">
                                             <button 
-                                                (submit)="OnUserSignUp"
+                                                (ngSubmit)="OnUserSignIn"
                                                 class="font-serif bg-bluesign text-white active:bg-bluesign text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s;"
                                                 type="submit">
                                                 Sign In</button>

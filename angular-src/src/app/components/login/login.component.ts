@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { ValidateService } from '../../services/validate.service';
 import {FlashMessagesService } from 'flash-messages-angular';
 import {Router, RouterModule} from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   pass?: string;
   firstname?: string;
   lastname?: string;
+  allUsers: any = [];
+  formData?: FormGroup;
 
   constructor(
     private title:Title,
@@ -27,7 +30,11 @@ export class LoginComponent implements OnInit {
     this.title.setTitle('Login Page');
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.formData = new FormGroup({
+      username: new FormControl("user"),
+      pass: new FormControl("user"),
+    });
   }
 
   showTab = 0;
@@ -44,7 +51,7 @@ export class LoginComponent implements OnInit {
     }
 
     // Required fields
-    if(!this.validateService.validateUser(user)) {
+    if(this.validateService.validateUser(user)) {
       this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
@@ -63,17 +70,28 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  OnUserSignIn() {
+  OnUserSignIn(data: any) {
     const user = {
-      username: this.username,
-      pass: this.pass,
+      username: data.username,
+      pass: data.pass,
     }
 
     // Required fields
-    if(!this.validateService.validateUser(user)) {
+    if(this.validateService.validateUser(user)) {
       this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
-  }
 
+    this.authService.authUser(user)
+      .subscribe((data: any) => {
+      if(data.success){
+        console.log("Is Login Success: " + data);
+        if(data) this.router.navigate(['/home']);
+        this.flashMessage.show('Login Successful!', {cssClass: 'alert-success', timeout:5000});
+      }else {
+        this.flashMessage.show(data.message, {cssClass: 'alert-danger', timeout:5000});
+        this.router.navigate(['login']);
+      }
+    });
+  }
 }
