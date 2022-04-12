@@ -17,7 +17,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminEditComponent } from './components/admin-edit/admin-edit.component';
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
+
 import { LogoutComponent } from './components/logout/logout.component';
+
 import { CartComponent } from './components/cart/cart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ContactComponent } from './contact/contact.component';
@@ -44,7 +46,9 @@ const appRoutes =[
     AdminComponent,
     LoginComponent,
     AdminEditComponent,
+
     LogoutComponent,
+
     CartComponent,
     CalendarComponent,
     ContactComponent,
