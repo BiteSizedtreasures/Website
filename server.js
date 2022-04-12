@@ -19,6 +19,7 @@ const products = require("./routes/products");
 
 // variable - Can edit which portname or port to host the website locally
 const server_port = process.env.PORT || 8080;
+const server_name = 'localhost'; 
 
 // Connecting to Mongo database
 mongoose.connect(config.database) // database is stores in the config file
@@ -44,7 +45,7 @@ app.use(
 ); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
-
+require("./config/passport")(passport);
 // Use '/users' for all our user route functions
 app.use("/users", users);
 app.use("/products", products);
@@ -70,7 +71,7 @@ if(server_port == 8080) {
 // Start Server
 app.listen(server_port, () => {
   if(server_port == 8080) { // development status
-    console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+    console.log(`Listening at http://${server_name}:${server_port}`);
   } else { // deployment status
     console.log("Server listening on port " + server_port);  
   }

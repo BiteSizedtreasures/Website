@@ -13,7 +13,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  email: string; // ? say is an auto-initilizer to blank string 
+  email: string; // '?' say is an auto-initilizer to blank string 
   password: string;
   firstname: string;
   lastname: string;
@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
 
   OnUserSignIn(data: any) {
     const user = {
-      email: data.email,
-      password: data.password,
+      email: this.email,
+      password: this.password,
     }
 
     // Required fields
