@@ -22,7 +22,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 
 import { CartComponent } from './components/cart/cart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
