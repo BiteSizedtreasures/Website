@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const config = require("../config/database");
 
 // User Scheme - represenation of what the databse will hold
 const UserSchema = mongoose.Schema({

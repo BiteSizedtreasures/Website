@@ -24,22 +24,6 @@ router.post("/", (req, res, next) => {
   });
 });
 
-// Create a user route
-router.post("/", async (req, res, next) => {
-  // Creates a new user object with the data received
-  let newUser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    phonenumber: req.body.phoneNumber,
-    password: req.body.password,
-  });
-  
-  if (newUser.save()) { // If the product information is saved
-    res.json({ success: true, message: "Product successfully created." });
-  } else { // If the product information is not saved in the database
-    res.json({ success: false, message: "Product not created." });
-  }
-});
 
 // Authenticate if the user is already registered
 router.post("/authenticate", (req, res, next) => {
