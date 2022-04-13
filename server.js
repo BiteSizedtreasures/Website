@@ -70,7 +70,7 @@ if(server_port == 8080) {
 // Start Server
 app.listen(server_port, () => {
   if(server_port == 8080) { // development status
-    console.log(`Listening at http://${process.env.HOST_NAME}:${server_port}`);
+    console.log(`Listening at http://${process.env.HOSTNAME}:${server_port}`);
   } else { // deployment status
     console.log("Server listening on port " + server_port);  
   }
