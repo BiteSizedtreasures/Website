@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
+import {Router, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    
+
   ) {}
 
   ngOnInit(): void {}

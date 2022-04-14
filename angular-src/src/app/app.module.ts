@@ -19,10 +19,10 @@ import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 
 import { LogoutComponent } from './components/logout/logout.component';
-
 import { CartComponent } from './components/cart/cart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -46,12 +46,11 @@ const appRoutes =[
     AdminComponent,
     LoginComponent,
     AdminEditComponent,
-
     LogoutComponent,
-
     CartComponent,
     CalendarComponent,
     ContactComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

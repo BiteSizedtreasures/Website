@@ -1,8 +1,8 @@
-<div class="relative min-h-screen flex">
+<div class=" container mx-auto p-5">
   <!-- Sidebar -->
-  <div class="w-64">
+  <div class="w-64" aria-label="Sidebar">
     <!-- nav -->
-    <nav>
+    <nav flex flex-col flex-row justify-between >
       <a (click)="tabToggle(0)" class="block py-2 5 px-4 hover:bg-brown"
         >All Product</a
       >
@@ -16,30 +16,32 @@
     *ngIf="showTab == 0 && allProducts.length > 0"
     class="grid-flow-row-dense"
   >
-    <div class="grid gap-x-8 gap-y-4 grid-cols-3">
-      <div
-        *ngFor="let product of allProducts[1]"
-        class="max-w-xs rounded-md overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer"
-      >
-        <div>
-          <img
-            src="https://media.ldlc.com/r1600/ld/products/00/05/82/02/LD0005820208_1.jpg"
-            alt=""
-          />
-        </div>
-        <div class="py-4 px-4 bg-white">
-          <h3 class="text-lg font-semibold text-center">{{ product.name }}</h3>
-          <div class="grid gap-x-8 gap-y-4">
-          <button routerLink="/product/{{ product._id }}" class=" hover:bg-brown">
-            <p>Edit Button</p>
-          </button>
-          <button class="px-2 hover:bg-brown" (click)="onDelete(product._id)">
-            <p>Delete Button</p>
-          </button>
+    <div class="my-20">
+      <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+        <div *ngFor="let product of allProducts[1]" class="shadow-lg  hover:scale-105 transition duration-500 cursor-pointer">
+          <a routerLink="/">
+            <img src="https://media.ldlc.com/r1600/ld/products/00/05/82/02/LD0005820208_1.jpg" class="group-hover:opacity-75 rounded-tl-lg rounded-tr-lg">
+          </a>
+          <div class="p-5">
+            <h3><a routerLink="/">{{ product.name }}</a></h3>
+            <div class="flex flex-row my-3">
+              <div class="border-2 border-gray-300 text-gray-400 rounded-md text-xs px-2 py-1 mr-2">
+                ${{ product.price }}
+              </div>
+            </div>
+            <div class="flex flex-col flex-row justify-between">
+              <button routerLink="/product/{{ product._id }}" class="bg-gradient-to-r from-purple to-orange rounded-full py-2 px-4 my-2 text-sm text-b hover:bg-lite-pink hover:from-dark-pink hover:to-lite-pink flex flex-row justify-center">
+                Edit Product
+              </button>
+              <button (click)="onDelete(product._id)" class="bg-blue-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple flex flex-row justify-center">
+                Delete Product
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
   <!-- Add Product -->
@@ -148,9 +150,5 @@
         </button>
       </div>
     </form>
-
-    <p class="text-center text-gray-500 text-xs">
-      &copy;2022 Bite Sized Treasures Corp. All rights reserved.
-    </p>
   </div>
 </div>
