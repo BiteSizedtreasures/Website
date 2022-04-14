@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 import { LoginComponent } from '../components/login/login.component';
 
-const baseUrl = 'http://localhost:8080/'; // Development
-// const baseUrl = ''; // Production
+// const baseUrl = 'http://localhost:8080/'; // Development
+const baseUrl = ''; // Production
 @Injectable({
   providedIn: 'root'
 })
