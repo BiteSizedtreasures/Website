@@ -56,6 +56,14 @@ export class AuthService {
     return this.http.post(baseUrl + 'users/authenticate', user, {headers:head});
   }
 
+  sendEmail(item : any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'contact/send', item, {
+      headers: headers
+    });
+  }
+
   addProduct(item : any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');

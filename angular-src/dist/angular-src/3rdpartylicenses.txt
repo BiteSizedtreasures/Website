@@ -13,6 +13,9 @@ MIT
 @angular/router
 MIT
 
+@mobiscroll/angular
+SEE LICENSE IN LICENSE
+
 flash-messages-angular
 MIT
 

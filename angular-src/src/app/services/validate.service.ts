@@ -22,7 +22,7 @@ export class ValidateService {
       return true;
     }
   }
-  
+
   validateUser(user: any) {
     if( user.user == undefined || user.pass == undefined && !this.validateEmail(user.user)){
       return false;
@@ -35,5 +35,18 @@ export class ValidateService {
     const re =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+  }
+
+  validateContactInfo(info : any) {
+    if(
+      info.name == undefined ||
+      info.email == undefined ||
+      info.subject == undefined ||
+      info.message == undefined
+    ) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

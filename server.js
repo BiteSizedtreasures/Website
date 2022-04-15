@@ -15,7 +15,7 @@ const app = express();
 // Routes for database - directs to functions for each data block
 const users = require("./routes/users");
 const products = require("./routes/products");
-
+const contact = require("./routes/contact");
 
 // variable - Can edit which portname or port to host the website locally
 const server_port = process.env.PORT || 8080;
@@ -48,6 +48,7 @@ app.use(passport.session());
 // Use '/users' for all our user route functions
 app.use("/users", users);
 app.use("/products", products);
+app.use("/contact", contact);
 
 // Set Static Folder
 if(server_port == 8080) {

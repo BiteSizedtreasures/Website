@@ -54,14 +54,14 @@ export class AdminComponent implements OnInit {
       if (data.success) {
         this.flashMessage.show('Product Deleted', {
           cssClass:
-            'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4',
+            'bg-green text-white rounded-lg p-4',
           timeout: 3000,
         });
         this.router.navigate(['/admin']);
       } else {
         this.flashMessage.show('Something went wrong.', {
           cssClass:
-            'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4',
+            'bg-colors-red-600 text-white rounded-lg p-4',
           timeout: 3000,
         });
       }
@@ -86,7 +86,7 @@ export class AdminComponent implements OnInit {
     // Required fields
     if (!this.validateService.validateAddProduct(item)) {
       this.flashMessage.show('Please fill in all the required fields.', {
-        cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4',
+        cssClass: 'bg-colors-red-600 text-white rounded-lg p-4',
         timeout: 3000,
       });
       return false;
@@ -97,14 +97,14 @@ export class AdminComponent implements OnInit {
       if (data.success) {
         this.flashMessage.show('Item was added successfully.', {
           cssClass:
-            'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4',
+            'bg-green text-white rounded-lg p-4',
           timeout: 3000,
         });
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       } else {
         this.flashMessage.show('Something went wrong.', {
           cssClass:
-            'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4',
+            'bg-colors-red-600 text-white rounded-lg p-4',
           timeout: 3000,
         });
         this.router.navigate(['/admin']);
