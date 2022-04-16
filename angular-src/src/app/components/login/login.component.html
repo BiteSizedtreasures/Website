@@ -76,7 +76,7 @@
                                 <!-- login page -->
                                 <div *ngIf="showTab == 1" class="w-full max-w-s">
                                     <form
-                                        (submit) = "OnUserSignIn(formData)"
+                                        (submit) = "OnUserSignIn()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
                                         class = "bg-lite-pink">
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="text-center mt-6">
                                             <button 
-                                                (ngSubmit)="OnUserSignIn"
+                                                (submit)="OnUserSignIn()"
                                                 class="font-serif bg-bluesign text-white active:bg-bluesign text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full" type="button" style="transition: all 0.15s ease 0s;"
                                                 type="submit">
                                                 Sign In</button>

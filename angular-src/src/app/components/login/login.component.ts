@@ -3,8 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
 import { ValidateService } from '../../services/validate.service';
 import {FlashMessagesService } from 'flash-messages-angular';
-import {Router, RouterModule} from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +12,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  email: string; // '?' say is an auto-initilizer to blank string 
+  email: string; // '?' say is an auto-initializer to blank string 
   password: string;
   firstname: string;
   lastname: string;
   allUsers: any = [];
-  formData?: FormGroup;
 
   constructor(
     private title:Title,
@@ -65,24 +63,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  OnUserSignIn(data: any) {
+  OnUserSignIn() {
     const user = {
       email: this.email,
       password: this.password,
     }
 
     // Required fields
-    if(!this.validateService.validateUser(user)) {
+    if(!this.validateService.validateLogin(user)) {
       this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
       return false;
     }
 
-    this.authService.authUser(user)
-      .subscribe((data: any) => {
+    this.authService.authUser(user).subscribe((data: any) => {
       if(data.success){
         console.log("Is Login Success: " + data);
-        if(data) this.router.navigate(['/home']);
+        this.authService.storeUserData(data.token, data.user);
         this.flashMessage.show('Login Successful!', {cssClass: 'alert-success', timeout:5000});
+        this.router.navigate(['home']);
       }else {
         this.flashMessage.show(data.message, {cssClass: 'alert-danger', timeout:5000});
         this.router.navigate(['login']);

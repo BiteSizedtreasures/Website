@@ -46,7 +46,6 @@ const appRoutes =[
     AdminComponent,
     LoginComponent,
     AdminEditComponent,
-
     LogoutComponent,
 
     CartComponent,

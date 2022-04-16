@@ -36,6 +36,16 @@ export class ValidateService {
     }
   }
 
+  validateLogin(user : any) {
+    if (
+      user.email == undefined ||
+      user.password == undefined
+    ) {
+      return false;
+    }
+    return true;
+  }
+
   // Validates if email is in correct format
   validateEmail(email : any) {
     const re =

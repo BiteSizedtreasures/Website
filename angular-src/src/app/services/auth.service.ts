@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 import { LoginComponent } from '../components/login/login.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 const baseUrl = 'http://localhost:8080/'; // Development
 //const baseUrl = ''; // Production
@@ -19,6 +20,13 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
+  authenticateUser(user: any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'users/', user, { headers: headers });
+    // .pipe(map((res: any) => res.json()));
+  }
+
   registerUser(user: any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
@@ -26,11 +34,9 @@ export class AuthService {
     // .pipe(map((res: any) => res.json()));
   }
 
-  authenticateUser(user: any) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers });
-    // .pipe(map((res: any) => res.json()));
+  loggedIn() {
+    const jwtHelper = new JwtHelperService();
+    return (jwtHelper.isTokenExpired(this.tokAuth));
   }
 
   storeUserData(tok: any, user: any){
