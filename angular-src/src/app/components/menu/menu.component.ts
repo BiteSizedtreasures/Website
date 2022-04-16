@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,13 +8,24 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  allProducts: any[];
 
   constructor(
     private title: Title,
-  ) { 
-    this.title.setTitle('Menu');
+    private authService: AuthService
+  ) {
+    this.title.setTitle('Menu Page');
   }
 
   ngOnInit(): void {
+    this.fetchAllProducts();
+  }
+
+  fetchAllProducts() {
+    const productsObservable = this.authService.fetchAllProducts();
+    productsObservable.subscribe((data: any) => {
+      data = Object.values(data);
+      this.allProducts = data;
+    });
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ValidateService } from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
 import {FlashMessagesService } from 'flash-messages-angular';
 
@@ -21,7 +20,6 @@ export class AdminEditComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private validateService: ValidateService,
     private route: ActivatedRoute,
     private flashMessage: FlashMessagesService,
   ) {}

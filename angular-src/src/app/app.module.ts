@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,10 +20,11 @@ import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 
 import { LogoutComponent } from './components/logout/logout.component';
-
 import { CartComponent } from './components/cart/cart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ItemPageComponent } from './components/item-page/item-page.component';
 
 const appRoutes =[
   { path: '', component: HomeComponent},
@@ -34,6 +36,7 @@ const appRoutes =[
   { path: 'cart', component: CartComponent},
   { path: 'calendar', component: CalendarComponent},
   { path: 'contact', component: ContactComponent},
+  { path: ':id', component: ItemPageComponent },
 ];
 @NgModule({
   declarations: [
@@ -47,12 +50,14 @@ const appRoutes =[
     LoginComponent,
     AdminEditComponent,
     LogoutComponent,
-
     CartComponent,
     CalendarComponent,
     ContactComponent,
+    FooterComponent,
+    ItemPageComponent,
   ],
-  imports: [
+  imports: [ 
+    MbscModule, 
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

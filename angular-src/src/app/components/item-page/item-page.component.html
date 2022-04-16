@@ -1,0 +1,17 @@
+<div class="my-20">
+  <div class="grid grid-flow-row grid-cols-2 gap-10">
+    <div class="shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
+      <a>
+        <img src="https://media.ldlc.com/r1600/ld/products/00/05/82/02/LD0005820208_1.jpg" class="group-hover:opacity-75 rounded-tl-lg rounded-tr-lg">
+      </a>
+      <div class="p-5">
+        <h3 [(ngModel)]="name" type="text" name="name"><a>{{ allProducts.name }}</a></h3>
+        <div class="flex flex-row my-3">
+          <div [(ngModel)]="price" type="price" name="price" class="border-2 border-gray-300 text-gray-400 rounded-md text-xs px-2 py-1 mr-2">
+            ${{ allProducts.price }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

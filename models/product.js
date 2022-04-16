@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const config = require("../config/database");
-
 
 // User Scheme - represenation of what the databse will hold
 const ProductSchema = new mongoose.Schema({
@@ -34,9 +32,8 @@ const ProductSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     required: true,
-    default: Date.now()
+    default: Date.now(),
   },
-  
 });
 
 // Exports the model scheme of the database

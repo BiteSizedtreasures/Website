@@ -5,7 +5,7 @@ import { tap, delay } from 'rxjs/operators';
 import { LoginComponent } from '../components/login/login.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-//const baseUrl = 'http://localhost:8080/'; // Development
+// const baseUrl = 'http://localhost:8080/'; // Development
 const baseUrl = ''; // Production
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,27 @@ export class AuthService {
   user: any;
   tokAuth: any;
   isUserLoggedIn: boolean = false;
-  
+
   constructor(
     private http: HttpClient
   ) {}
+
+  logout(): void {
+    this.isUserLoggedIn = false;
+       localStorage.removeItem('isUserLoggedIn');
+  }
+
+  login(user: any): Observable<boolean> {
+    console.log(user);
+    this.isUserLoggedIn = user == 'user';
+    localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
+
+    return of(this.isUserLoggedIn).pipe(
+      delay(1000),
+      tap(val => {
+         console.log("Is User Authentication is successful: " + val);
+      })
+    );
 
   authenticateUser(user: any) {
     let headers = new HttpHeaders();
@@ -50,6 +67,14 @@ export class AuthService {
     let head = new HttpHeaders();
     head.append('Content-Type', 'application/json');
     return this.http.post(baseUrl + 'users/authenticate', user, {headers:head});
+  }
+
+  sendEmail(item : any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'contact/send', item, {
+      headers: headers
+    });
   }
 
   addProduct(item : any) {

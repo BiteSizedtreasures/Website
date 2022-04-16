@@ -4,9 +4,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Salsa');
 
-html, body {
-    background-color: white;
-    font-family: Salsa, sans-serif;
-    background-color: #FFF5DA;
-    color: #5D534A;
+body {
+  font-family: Salsa;
 }
+
+
+@import "~@mobiscroll/angular/dist/css/mobiscroll.scss";
