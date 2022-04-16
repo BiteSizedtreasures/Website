@@ -3,9 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, delay } from 'rxjs/operators';
 import { LoginComponent } from '../components/login/login.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-//const baseUrl = 'http://localhost:8080/'; // Development
-const baseUrl = ''; // Production
+const baseUrl = 'http://localhost:8080/'; // Development
+//const baseUrl = ''; // Production
 @Injectable({
   providedIn: 'root'
 })
@@ -19,28 +20,23 @@ export class AuthService {
     private http: HttpClient
   ) {}
 
-  logout(): void {
-    this.isUserLoggedIn = false;
-       localStorage.removeItem('isUserLoggedIn'); 
+  authenticateUser(user: any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'users/', user, { headers: headers });
+    // .pipe(map((res: any) => res.json()));
   }
 
-  login(user: any): Observable<boolean> {
-    console.log(user);
-    this.isUserLoggedIn = user == 'user';
-    localStorage.setItem('isUserLoggedIn', this.isUserLoggedIn ? "true" : "false");
-    
-    return of(this.isUserLoggedIn).pipe(
-      delay(1000),
-      tap(val => { 
-         console.log("Is User Authentication is successful: " + val); 
-      })
-    );
+  registerUser(user: any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(baseUrl + 'users/', user, { headers: headers });
+    // .pipe(map((res: any) => res.json()));
   }
 
-  addNewUser(user: any){
-    let head = new HttpHeaders();
-    head.append('Content-Type', 'application/json');
-    return this.http.post(baseUrl+ 'users/login', user, {headers: head});
+  loggedIn() {
+    const jwtHelper = new JwtHelperService();
+    return (jwtHelper.isTokenExpired(this.tokAuth));
   }
 
   storeUserData(tok: any, user: any){
