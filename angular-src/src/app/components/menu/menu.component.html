@@ -1,16 +1,16 @@
 <div class="my-20">
   <div class="flex flex-row justify-between my-5">
-    <h2 class="text-3xl"> Cakeballs</h2>
+    <h2 class="text-3xl text-gray-600 dark:text-white"> Cakeballs</h2>
   </div>
   <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-    <div *ngFor="let product of allProducts[1]" class="shadow-lg  hover:scale-105 transition duration-500 cursor-pointer">
+    <div *ngFor="let product of allProducts[1]" class="shadow-lg dark:shadow-gray-800 hover:scale-105 transition duration-500 cursor-pointer">
       <a routerLink="/{{ product._id }}">
         <img src="https://media.ldlc.com/r1600/ld/products/00/05/82/02/LD0005820208_1.jpg" class="group-hover:opacity-75 rounded-tl-lg rounded-tr-lg">
       </a>
-      <div class="p-5">
+      <div class=" p-5  text-gray-600 dark:text-white">
         <h3><a routerLink="/{{ product._id }}">{{ product.name }}</a></h3>
         <div class="flex flex-row my-3">
-          <div class="border-2 border-gray-300 text-gray-400 rounded-md text-xs px-2 py-1 mr-2">
+          <div class="border-2 border-gray-300 dark:border-white text-gray-600 dark:text-white rounded-md text-xs px-2 py-1 mr-2">
             ${{ product.price }}
           </div>
         </div>

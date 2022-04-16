@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
+import { Component, Inject, OnInit } from '@angular/core';
 import {Router, RouterModule} from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +10,22 @@ import {Router, RouterModule} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   constructor(
-
+    @Inject(DOCUMENT)  document: Document,
   ) {}
 
   ngOnInit(): void {}
 
-  navbarOpen = false;
+  toggle = false;
+  status = 'Enable';
+
+  enableDisableRule() {
+    this.toggle = !this.toggle;
+    if(this.toggle) {
+      document.querySelector('html')?.classList.add('dark');
+    } else {
+      document.querySelector('html')?.classList.remove('dark');
+    }
+    this.status = this.toggle ? 'Enable' : 'Disable';
+  }
 
 }

@@ -1,8 +1,9 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
-  content: [
-      "./src/**/*.{html,ts}",
-  ],
+  purge: {
+    content: [ "./src/**/*.{html,ts, scss}",]
+  },
+  darkMode: 'class', // false, 'class', 'media'
   theme: {
     colors: {
       'blue': '#1fb6ff',
@@ -21,6 +22,9 @@ module.exports = {
       gray: colors.slate,
       white: colors.white,
       pink: colors.pink,
+      black: '#14171A',
+      tb: '#000000',
+      lightblack: '#181a1b',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],

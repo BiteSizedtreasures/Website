@@ -1,14 +1,7 @@
-
-.closebtn {
-  margin-left: 80px;
-  color: text-gray-600;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+.light-mode {
+  background-color: white;
 }
 
-.closebtn:hover {
-  color: white;
+.dark-mode {
+  background-color: #181a1b;
 }

@@ -3,10 +3,10 @@
   <div class="w-64" aria-label="Sidebar">
     <!-- nav -->
     <nav flex flex-col flex-row justify-between >
-      <a (click)="tabToggle(0)" class="block py-2 5 px-4 hover:bg-brown"
+      <a (click)="tabToggle(0)" class="block py-2 5 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-600 dark:text-white"
         >All Product</a
       >
-      <a (click)="tabToggle(1)" class="block py-2 5 px-4 hover:bg-brown"
+      <a (click)="tabToggle(1)" class="block py-2 5 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-600 dark:text-white"
         >Add Product</a
       >
     </nav>
@@ -18,22 +18,22 @@
   >
     <div class="my-20">
       <div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-        <div *ngFor="let product of allProducts[1]" class="shadow-lg  hover:scale-105 transition duration-500 cursor-pointer">
+        <div *ngFor="let product of allProducts[1]" class="shadow-lg dark:shadow-gray-800 hover:scale-105 transition duration-500 cursor-pointer">
           <a routerLink="/">
             <img src="https://media.ldlc.com/r1600/ld/products/00/05/82/02/LD0005820208_1.jpg" class="group-hover:opacity-75 rounded-tl-lg rounded-tr-lg">
           </a>
-          <div class="p-5">
+          <div class="p-5 dark:text-white text-gray-600 ">
             <h3><a routerLink="/">{{ product.name }}</a></h3>
             <div class="flex flex-row my-3">
-              <div class="border-2 border-gray-300 text-gray-400 rounded-md text-xs px-2 py-1 mr-2">
+              <div class="border-2 border-gray-300 dark:border-white text-gray-600 dark:text-white rounded-md text-xs px-2 py-1 mr-2">
                 ${{ product.price }}
               </div>
             </div>
-            <div class="flex flex-col flex-row justify-between">
-              <button routerLink="/product/{{ product._id }}" class="bg-gradient-to-r from-purple to-orange rounded-full py-2 px-4 my-2 text-sm text-b hover:bg-lite-pink hover:from-dark-pink hover:to-lite-pink flex flex-row justify-center">
+            <div class="flex flex-row justify-between">
+              <button routerLink="/product/{{ product._id }}" class="bg-gradient-to-r from-purple to-orange rounded-full py-2 px-4 my-2 text-sm text-b dark:hover:from-colors-purple-700 dark:hover:to-colors-orange-700 hover:from-colors-purple-700 hover:to-colors-orange-700 flex flex-row justify-center">
                 Edit Product
               </button>
-              <button (click)="onDelete(product._id)" class="bg-blue-500 rounded-full py-2 px-4 my-2 text-sm text-white hover:bg-purple flex flex-row justify-center">
+              <button (click)="onDelete(product._id)" class="dark:bg-purple bg-blue-500 hover:bg-blue-700 rounded-full py-2 px-4 my-2 text-sm text-white dark:hover:bg-colors-purple-700 flex flex-row justify-center">
                 Delete Product
               </button>
             </div>
@@ -45,42 +45,40 @@
   </div>
 
   <!-- Add Product -->
-  <div *ngIf="showTab == 1" class="w-full max-w-s">
+  <div *ngIf="showTab == 1" class="w-full max-w-s dark:border-2 dark:border-purple rounded-md">
     <form
       (submit)="OnItemSubmit()"
       method="POST"
       enctype="multipart/form-data"
-      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      class="bg-white dark:bg-lightblack shadow-md rounded px-8 pt-6 pb-8 mb-4"
     >
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        <label class="block text-gray-600 dark:text-white text-sm font-bold mb-2" for="name">
           Name
         </label>
         <input
           [(ngModel)]="name"
           name="name"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
           id="name"
           type="text"
-          placeholder="Enter name"
         />
       </div>
       <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+        <label class="block text-gray-600 dark:text-white text-sm font-bold mb-2" for="price">
           Price
         </label>
         <input
           [(ngModel)]="price"
           name="price"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white  mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="price"
           type="number"
-          placeholder="Enter price"
         />
       </div>
       <div class="mb-6">
         <label
-          class="block text-gray-700 text-sm font-bold mb-2"
+          class="block text-gray-600 dark:text-white text-sm font-bold mb-2"
           for="ingredients"
         >
           Ingredients
@@ -88,15 +86,14 @@
         <input
           [(ngModel)]="ingredients"
           name="ingredients"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white  mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="ingredients"
           type="text"
-          placeholder="Enter ingredients"
         />
       </div>
       <div class="mb-6">
         <label
-          class="block text-gray-700 text-sm font-bold mb-2"
+          class="block text-gray-600 dark:text-white text-sm font-bold mb-2"
           for="allergins"
         >
           Allergins
@@ -104,28 +101,26 @@
         <input
           [(ngModel)]="allergins"
           name="allergins"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white  mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="allergins"
           type="text"
-          placeholder="Enter allergins"
         />
       </div>
       <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="coating">
+        <label class="block text-gray-600 dark:text-white text-sm font-bold mb-2" for="coating">
           Coating
         </label>
         <input
           [(ngModel)]="coating"
           name="coating"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white  mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="allergins"
           type="text"
-          placeholder="Enter coating"
         />
       </div>
       <div class="mb-6">
         <label
-          class="block text-gray-700 text-sm font-bold mb-2"
+          class="block text-gray-600 dark:text-white text-sm font-bold mb-2"
           for="decorations"
         >
           Decorations
@@ -133,17 +128,16 @@
         <input
           [(ngModel)]="decoration"
           name="decoration"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          class="bg-white dark:bg-lightblack shadow appearance-none border rounded w-full py-2 px-3 text-gray-600 dark:text-white  mb-3 leading-tight focus:outline-none focus:shadow-outline"
           id="decoration"
           type="text"
-          placeholder="Enter decorations"
         />
       </div>
 
       <div class="flex items-center justify-between">
         <button
           (submit)="OnItemSubmit()"
-          class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          class="text-white bg-purple dark:hover:bg-colors-purple-700 hover:bg-gray-600 font-bold py-2 px-4 rounded"
           type="submit"
         >
           Add Item
