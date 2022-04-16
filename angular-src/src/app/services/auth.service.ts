@@ -5,8 +5,8 @@ import { tap, delay } from 'rxjs/operators';
 import { LoginComponent } from '../components/login/login.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-// const baseUrl = 'http://localhost:8080/'; // Development
-const baseUrl = ''; // Production
+const baseUrl = 'http://localhost:8080/'; // Development
+// const baseUrl = ''; // Production
 @Injectable({
   providedIn: 'root'
 })
@@ -36,13 +36,14 @@ export class AuthService {
          console.log("Is User Authentication is successful: " + val);
       })
     );
+  }
 
   authenticateUser(user: any) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(baseUrl + 'users/', user, { headers: headers });
+    return this.http.post(baseUrl + 'users/authenticate', user, { headers: headers });
     // .pipe(map((res: any) => res.json()));
-  }
+  };
 
   registerUser(user: any) {
     let headers = new HttpHeaders();
@@ -121,3 +122,4 @@ export class AuthService {
     })
   }
 }
+

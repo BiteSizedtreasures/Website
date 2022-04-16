@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email: string; // '?' say is an auto-initializer to blank string 
+  email: string; // '?' say is an auto-initializer to blank string
   password: string;
   firstname: string;
   lastname: string;
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
     private router: Router,
-  ) { 
+  ) {
     this.title.setTitle('Login Page');
   }
 
@@ -45,18 +45,24 @@ export class LoginComponent implements OnInit {
 
     // Required fields
     if(!this.validateService.validateUser(user)) {
-      this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+      this.flashMessage.show('Please fill in all the required fields.',
+      {cssClass: 'bg-colors-red-600 text-white rounded-lg p-4',
+      timeout:3000});
       return false;
     }
 
     // Add user to database
     this.authService.registerUser(user).subscribe((data: any) => {
       if(data.success) {
-        this.flashMessage.show('User was successfully registered.',{cssClass: 'bg-green-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+        this.flashMessage.show('User was successfully registered.',
+        {cssClass: 'bg-green text-white rounded-lg p-4',
+        timeout:3000});
         this.router.navigate(['/login']);
-      } 
+      }
       else {
-        this.flashMessage.show('Something went wrong', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+        this.flashMessage.show('Something went wrong',
+        {cssClass: 'bg-colors-red-600 text-white rounded-lg p-4',
+        timeout:3000});
         this.router.navigate(['/register']);
       }
       return true;
@@ -71,7 +77,9 @@ export class LoginComponent implements OnInit {
 
     // Required fields
     if(!this.validateService.validateLogin(user)) {
-      this.flashMessage.show('Please fill in all the required fields.', {cssClass: 'bg-red-100 border-l-4 border-orange-500 text-orange-700 p-4', timeout:3000});
+      this.flashMessage.show('Please fill in all the required fields.',
+      {cssClass: 'bg-colors-red-600 text-white rounded-lg p-4',
+      timeout:3000});
       return false;
     }
 
@@ -79,10 +87,13 @@ export class LoginComponent implements OnInit {
       if(data.success){
         console.log("Is Login Success: " + data);
         this.authService.storeUserData(data.token, data.user);
-        this.flashMessage.show('Login Successful!', {cssClass: 'alert-success', timeout:5000});
-        this.router.navigate(['home']);
+        this.flashMessage.show('Login Successful!',
+        {cssClass: 'bg-green text-white rounded-lg p-4',
+        timeout:5000});
+        this.router.navigate(['/']);
       }else {
-        this.flashMessage.show(data.message, {cssClass: 'alert-danger', timeout:5000});
+        this.flashMessage.show(data.message,
+          {cssClass: 'bg-colors-red-600 text-white rounded-lg p-4', timeout:5000});
         this.router.navigate(['login']);
       }
     });
