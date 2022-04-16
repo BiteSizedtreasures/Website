@@ -6,12 +6,12 @@ const User = require("../models/user");
 const config = require("../config/database");
 
 // Process to register the user
-router.post("/", (req, res, next) => {
+router.post("/", (req, res, next) => { //register function
   // Creates a new user object with the data received
   let newUser = new User({
-    name: req.body.name,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
-    phonenumber: req.body.phoneNumber,
     password: req.body.password,
   });
   // notifies if user has been created
@@ -23,7 +23,6 @@ router.post("/", (req, res, next) => {
     }
   });
 });
-
 
 // Authenticate if the user is already registered
 router.post("/authenticate", (req, res, next) => {
@@ -47,13 +46,13 @@ router.post("/authenticate", (req, res, next) => {
         const token = jwt.sign(user.toJSON(), config.secret, {
           expiresIn: 604800, // 1 week : Will keep the user logged in till 1 week
         });
-        res.json({ // returns object in JSON format
+        res.json({ // returns object in JSON format (whenever it auth the user, it navigates to the home and displays user info)
           success: true,
           token: "JWT " + token,
           user: {
             id: user._id,
-            name: user.name,
-            phonenumber: user.phoneNumber,
+            firstname: user.firstname,
+            lastname: user.lastname,
             email: user.email,
           },
         });
@@ -64,21 +63,4 @@ router.post("/authenticate", (req, res, next) => {
   });
 });
 
-// Profile - Needs to be worked on. 
-router.get(
-  "/profile",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.json({
-      sucess: true,
-      user: {
-        _id: `JWT ` + req.user._id,
-        name: user.name,
-        phonenumber: user.phoneNumber,
-        email: user.email,
-      },
-    });
-  }
-);
-
-module.exports = router;
+module.exports = router; //connects to server.js file

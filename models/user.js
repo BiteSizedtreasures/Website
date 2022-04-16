@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-// User Scheme - represenation of what the databse will hold
+// User Scheme - representation of what the databse will hold
 const UserSchema = mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+    required: true,
+  },
+  lastname: {
     type: String,
     required: true,
   },
   email: {
     type: String,
-    required: true,
-  },
-  phoneNumber: {
-    type: Number,
     required: true,
   },
   password: {
@@ -33,12 +33,6 @@ module.exports.getUserById = function (id, callback) {
 // Find user by Email - Used for Login
 module.exports.getUserByEmail = function (email, callback) {
   const query = { email: email };
-  User.findOne(query, callback);
-};
-
-// Find user by phoneNumber - Used for Login
-module.exports.getUserByPhoneNumber = function (phoneNumber, callback) {
-  const query = { phoneNumber: phoneNumber };
   User.findOne(query, callback);
 };
 

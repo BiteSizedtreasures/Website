@@ -23,8 +23,24 @@ export class ValidateService {
     }
   }
 
-  validateUser(user: any) {
-    if( user.user == undefined || user.pass == undefined && !this.validateEmail(user.user)){
+  validateUser(user : any) {
+    if (
+      user.firstname == undefined ||
+      user.email == undefined ||
+      user.lastname == undefined ||
+      user.password == undefined
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  validateLogin(user : any) {
+    if (
+      user.email == undefined ||
+      user.password == undefined
+    ) {
       return false;
     }
     return true;
