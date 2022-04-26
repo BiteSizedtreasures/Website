@@ -1,6 +1,6 @@
 <html>
 <section class="w-full top-0">
-    <div class="w-full h-full bg-black background-size: 100%; background-repeat: no-repeat;"></div>
+    <div class="w-full h-full bg-white dark:bg-lightblack background-size: 100%; background-repeat: no-repeat;"></div>
     <div class="container mx-auto px-4 h-full">
         <div class="flex content-center items-center justify-center h-full">
             <div class="w-full lg:w-4/12 px-4">
@@ -18,13 +18,13 @@
                                         (submit) = "OnUserSignUp()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
-                                        class = "container rounded-lg bg-white px-2 py-2">
+                                        class = "container rounded-lg bg-white px-2 py-2 dark:bg-lightblack">
                                             <div class="relative w-full mb-3">
-                                                <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                                <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                                     First Name</label>
                                                 <input 
                                                     type="text" 
-                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter First Name"
                                                     [(ngModel)] = "firstname"
                                                     name = "firstname"
@@ -32,33 +32,33 @@
                                                     >
                                             </div>
                                             <div class="relative w-full mb-3">
-                                                <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                                <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                                     Last Name</label>
                                                 <input 
                                                     type="text" 
-                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter Last Name"
                                                     [(ngModel)] = "lastname"
                                                     name = "lastname"
                                                     id = "lastname">
                                             </div>
                                             <div class="relative w-full mb-3">
-                                                <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                                <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                                     Email</label>
                                                 <input
                                                     type="text"
-                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter email"
                                                     [(ngModel)]="email"
                                                     name = "email"
                                                     id = "email">
                                             </div>
                                             <div class="relative w-full mb-3">
-                                                <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                                <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                                     Password</label>
                                                 <input 
                                                     type="text" 
-                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                    class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                     placeholder="Enter password"
                                                     [(ngModel)] = "password"
                                                     name = "password"
@@ -79,24 +79,24 @@
                                         (submit) = "OnUserSignIn()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
-                                        class = "container rounded-lg bg-white px-2 py-2">
+                                        class = "container rounded-lg bg-white px-2 py-2 dark:bg-lightblack">
                                         <div class="relative w-full mb-3">
-                                        <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                        <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                             Email</label>
                                             <input
                                                 type="text"
-                                                class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                 placeholder="Enter email"
                                                 [(ngModel)]="email"
                                                 name = "email"
                                                 id = "email">
                                         </div>
                                         <div class="relative w-full mb-3">
-                                            <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                            <label class="font-serif block uppercase text-gray-600 dark:text-white text-xs font-bold mb-2" for="grid-password">
                                                 Password</label>
                                             <input 
                                                 type="text" 
-                                                class="font-serif px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
+                                                class="font-serif px-3 py-3 placeholder-gray-400 text-gray-600 dark:text-white bg-gray-100 dark:bg-lightblack rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                                                 placeholder="Enter password"
                                                 [(ngModel)] = "password"
                                                 name = "password"
@@ -104,7 +104,7 @@
                                         </div>
                                         <div>
                                             <label class="inline-flex items-center cursor-pointer">
-                                                <input id="customCheckLogin" type="checkbox" class="font-serif form-checkbox text-gray-800 ml-1 w-5 h-5" style="transition: all 0.15s ease 0s;"><span class="ml-2 text-sm font-semibold text-gray-700">Remember me</span></label>
+                                                <input id="customCheckLogin" type="checkbox" class="ml-2 text-sm font-semibold font-serif form-checkbox ml-1 w-5 h-5" style="transition: all 0.15s ease 0s;"><div class="ml-2 text-sm font-semibold text-gray-600 dark:text-white">Remember me</div></label>
                                         </div>
                                         <div class="text-center mt-6">
                                             <button 
