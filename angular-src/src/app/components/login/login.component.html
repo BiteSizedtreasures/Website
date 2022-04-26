@@ -1,24 +1,24 @@
 <html>
 <section class="w-full top-0">
-    <div class="w-full h-full bg-taupe background-size: 100%; background-repeat: no-repeat;"></div>
+    <div class="w-full h-full bg-black background-size: 100%; background-repeat: no-repeat;"></div>
     <div class="container mx-auto px-4 h-full">
         <div class="flex content-center items-center justify-center h-full">
             <div class="w-full lg:w-4/12 px-4">
-                <div class="flex flex-col min-w-12 break-words w-full mb-6 shadow-lg rounded-lg bg-lite-pink border-0">
-                    <div class="flex-auto px-4 lg:px-10 py-8 pt-0 bg-lite-pink/50"> <!--this piece needs work -->
-                        <div class="grid grid-cols-2 gap-0">
-                            <!-- Login/Register Buttons -->
-                            <button (click) = "toggle(1)" class = "text-center text-4xl hover:text-bage font-serif bg-base-100">Login</button>
-                            <button (click)= "toggle(0)" class = "text-center text-4xl hover:text-bage font-serif bg-base-100">Register</button>
-                        </div>
-                            <hr class="flex content-center pt-2">
+                <div class="flex flex-col min-w-12 break-words w-full mb-6 shadow-lg rounded-lg border-0">
+                    <div class="flex-auto px-4 lg:px-4 py-4 pt-0 bg-gradient-to-r from-purple to-orange rounded-lg">
+                        <hr class="">
+                            <div class="grid grid-cols-2 gap-0 flex content-center pt-2">
+                                <!-- Login/Register Buttons -->
+                                <button (click) = "toggle(1)" class = "text-center text-4xl text-white hover:text-gray-300 font-serif bg-base-100">Login</button>
+                                <button (click)= "toggle(0)" class = "text-center text-4xl text-white hover:text-gray-300 font-serif bg-base-100">Register</button>
+                            </div>
                             <!-- register page -->
                                 <div *ngIf="showTab == 0" class="w-full max-w-s">
                                     <form
                                         (submit) = "OnUserSignUp()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
-                                        class = "bg-lite-pink">
+                                        class = "container rounded-lg bg-white px-2 py-2">
                                             <div class="relative w-full mb-3">
                                                 <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                                     First Name</label>
@@ -79,7 +79,7 @@
                                         (submit) = "OnUserSignIn()"
                                         method = "POST"
                                         enctype = "multipart/form-data"
-                                        class = "bg-lite-pink">
+                                        class = "container rounded-lg bg-white px-2 py-2">
                                         <div class="relative w-full mb-3">
                                         <label class="font-serif block uppercase text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                             Email</label>
